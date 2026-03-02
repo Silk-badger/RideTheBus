@@ -17,3 +17,5 @@
 
 #4th (final) - Value Error
 #Math.sqrt(-10) <-- not a full number, so can't be square rooted.
+
+#HOW TO DEBUG - See video made in class on 3/2/26 (Breakpoints are the red circles on each line, )
