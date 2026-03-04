@@ -27,14 +27,18 @@ def player():
         print("Anyways Billy, welcome to...\n \nRIDE! \nTHE! \nBUS!\n")
     else:
         print("Nice to meet you,", playerName, " Welcome to...\n \nRIDE! \nTHE! \nBUS!\n")
-
+#realBeginning = False
+#while realBeginning == False:
 def beginGame():
     Starting = input("\nIf you're prepped, please type 'ready' to start, or 'help' for instructions.\n")
     if Starting == "help":
-        print (rules)
+        print(rules)
         Starting = input()
     elif Starting == "ready":
+        #realBeginning = True
         print("-to be written.-")
     else:
-        print("That's not a correct input. Do note, it's cap sensitive.")
+        print("That's not a correct input. Do note, it's cap sensitive.\n")
         Starting = input()
+
+#Change some definitions to while loops for easier control.
