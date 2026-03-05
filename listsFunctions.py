@@ -1,3 +1,5 @@
+import random
+
 
 rules = "\nYou will play 1-4 rounds, depending on which round you decide to cash in on, \n or which round you loose on. " \
 "The rounds are described and ruled as follows, in order. \n" \
@@ -40,6 +42,40 @@ def beginGame():
         print("That's not a correct input. Do note, it's cap sensitive.\n")
         Starting = input()
 #while Gameplay == True:
+
+def shuffleDeck():
+    deck = []
+    for suit in Suits_list:
+        deck.append((card, suit))
+    random.shuffle(deck)
+    return
+
+def ValueofCard(card):
+    values = {"Ace":1, "2":2, "3":3, "4":4, "5":5, "6":6, "7":7, "8":8, "9":9, "10":10, "Jack":11, "King":12, "Queen":13}
+    return values[card]
+
+#After a little research on W3Schools, I've learned of .pop, which removes an item from the list and returns it.
+
+def drawCard(deck):
+    return deck.pop()
+
+def firstRound(deck, bet):
+    guess = input("Alright, then... First: Red or Black?\n")
+
+    card = drawCard(deck)
+    value, suit = card
+
+    Color = "Red" if suit in ["Hearts", "Diamonds"] else "Black"
+    print("\nLet's see it, looks like you drew...\n\n", value, "of", suit)
+
+    if guess == Color:
+        print("\nwinner winner! lucky start!\n")
+        return True, bet *2, card
+        print("Now you're at ", chips)
+    else:
+        print("\nUh oh, loser alert!\n")
+        return False, 0, card
+        print("Now you're at ", chips)
 
 
 #Change some definitions to while loops for easier control.
