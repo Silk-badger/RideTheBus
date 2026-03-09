@@ -21,7 +21,7 @@ Card_list = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen
 #Implement shuffle()
 #Implement a random number generator
 
-Gameplay = False
+Gameplay = True
 
 def player():
     playerName = input("What's your name, friend? ")
@@ -29,27 +29,28 @@ def player():
         print("Wrong, that's my name. We're calling you billy.")
         playerName == "Billy"
         print("Anyways Billy, welcome to...\n \nRIDE! \nTHE! \nBUS!\n")
-        Gameplay = True
+        Gameplay = False
     else:
         print("Nice to meet you,", playerName, " Welcome to...\n \nRIDE! \nTHE! \nBUS!\n")
-        Gameplay = True
+        Gameplay = False
 
 def beginGame():
     Starting = input("\nIf you're prepped, please type 'ready' to start, or 'help' for instructions.\n")
     if Starting == "help":
         print(rules)
         Gameplay = True
+            
     elif Starting == "ready":
         print("\nGreat, let's get into it!\n")
         print("\nTo start, it looks like you have", chips, "Chips!\n")
         Gameplay = False
-        firstRound()
+
     else:
         print("That's not a correct input. Do note, it's cap sensitive.\n")
         Gameplay = True
 
-while Gameplay == True:
-    print(beginGame)
+while not Gameplay: #Realized using this was easier than using "== True"
+    beginGame()
 
 def shuffleDeck():
     deck = []
@@ -92,7 +93,7 @@ def betweenRounds(currentBet): #created this to give the player a chance to rele
 
 
 
-def firstRound(deck, bet):
+def firstRound(deck, bet): #Code for first round. 
     guess = input("Alright, then... First: Red or Black?\n")
 
     card = drawCard(deck)
