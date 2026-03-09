@@ -4,4 +4,3 @@ import random
 player()
 beginGame()
 #print(rules)
-print("To start, it looks like you have", chips, "Chips!")

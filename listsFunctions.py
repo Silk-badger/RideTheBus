@@ -21,27 +21,35 @@ Card_list = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen
 #Implement shuffle()
 #Implement a random number generator
 
+Gameplay = False
+
 def player():
     playerName = input("What's your name, friend? ")
     if playerName == "Card Master":
         print("Wrong, that's my name. We're calling you billy.")
         playerName == "Billy"
         print("Anyways Billy, welcome to...\n \nRIDE! \nTHE! \nBUS!\n")
+        Gameplay = True
     else:
         print("Nice to meet you,", playerName, " Welcome to...\n \nRIDE! \nTHE! \nBUS!\n")
-#Gameplay = False
+        Gameplay = True
+
 def beginGame():
     Starting = input("\nIf you're prepped, please type 'ready' to start, or 'help' for instructions.\n")
     if Starting == "help":
         print(rules)
-        Starting = input()
+        Gameplay = True
     elif Starting == "ready":
-        #Gameplay = True
-        print("-to be written.-")
+        print("\nGreat, let's get into it!\n")
+        print("\nTo start, it looks like you have", chips, "Chips!\n")
+        Gameplay = False
+        firstRound()
     else:
         print("That's not a correct input. Do note, it's cap sensitive.\n")
-        Starting = input()
-#while Gameplay == True:
+        Gameplay = True
+
+while Gameplay == True:
+    print(beginGame)
 
 def shuffleDeck():
     deck = []
@@ -59,6 +67,31 @@ def ValueofCard(card):
 def drawCard(deck):
     return deck.pop()
 
+def betweenRounds(currentBet): #created this to give the player a chance to relearn rules or cashout.
+    
+    while True: 
+    
+        nextSteps = input("\nAlrighty, you're between rounds. Need help, want to cashout, or ready to continue? (Remember, no capitals) \n ")
+        if nextSteps == "help":
+            print(rules)
+            betweenRounds = True
+
+        elif nextSteps == "cashout": 
+            nextSteps = False
+            print("\nLooks like you're cashing out at ", chips)
+            print("Thank's for playing, ", player, " it was fun! hope to see you again soon.")
+            exit(0)
+
+        elif nextSteps == "continue":
+            nextSteps = False
+            continue
+
+        else:
+            print("\nThat's not a correct input, give it another shot. \n")
+            nextSteps = True
+
+
+
 def firstRound(deck, bet):
     guess = input("Alright, then... First: Red or Black?\n")
 
@@ -72,10 +105,12 @@ def firstRound(deck, bet):
         print("\nwinner winner! lucky start!\n")
         return True, bet *2, card
         print("Now you're at ", chips)
+        betweenRounds = True
     else:
         print("\nUh oh, loser alert!\n")
         return False, 0, card
-        print("Now you're at ", chips)
+        print("Now you're at ", chips, "\n")
+        betweenRounds = True
 
 
 #Change some definitions to while loops for easier control.
