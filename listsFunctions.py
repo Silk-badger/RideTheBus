@@ -8,7 +8,8 @@ rules = "\nYou will play 1-4 rounds, depending on which round you decide to cash
 "\n \t \t 3rd play - Guess if the next card will be on the inside or outside of the previous two cards for a *4 multiplier \n" \
 "\t \t (aka, if round one was a 4 and round 2 was a 6, 5 would be inside and anything else would be outside) \n" \
 "\n \t \t \t 4th play (final round) - Guess the suit of the final card drawn for a *10 jackpot. \n \n" \
-"Once you've finished reading, please type ready to start.\n"
+"\n NOTE: There is no pause between rounds, so cashout on the round you're on or keep playing.\n" \
+"\nOnce you've finished reading, please type ready to start.\n"
 
 chips = 500
 
@@ -24,33 +25,48 @@ Card_list = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen
 Gameplay = True
 
 def player():
+    global Gameplay
+    global playerName #Learned what global was from W3 (See Python global Keyword)
+    
     playerName = input("What's your name, friend? ")
     if playerName == "Card Master":
-        print("Wrong, that's my name. We're calling you billy.")
+        print("Wrong, that's my name. We're calling you Billy.")
         playerName == "Billy"
         print("Anyways Billy, welcome to...\n \nRIDE! \nTHE! \nBUS!\n")
         Gameplay = False
+    
     else:
         print("Nice to meet you,", playerName, " Welcome to...\n \nRIDE! \nTHE! \nBUS!\n")
         Gameplay = False
 
+
 def beginGame():
+    global Gameplay
     Starting = input("\nIf you're prepped, please type 'ready' to start, or 'help' for instructions.\n")
+    
     if Starting == "help":
         print(rules)
-        Gameplay = True
-            
+
     elif Starting == "ready":
+        Gameplay = True
         print("\nGreat, let's get into it!\n")
         print("\nTo start, it looks like you have", chips, "Chips!\n")
-        Gameplay = False
+
+        deck = shuffleDeck()
+
+        bet = int(input("Please place your bet, ", player))
+        if bet < 10 or bet > 100:
+            print("Sorry pal, you can't bet under 10 or over 100, please try again.")
+        elif bet > 10 and bet < 100: 
+            chips.append(bet)
+        
+        result, bet, first_card = firstRound(deck, bet)
+
 
     else:
         print("That's not a correct input. Do note, it's cap sensitive.\n")
-        Gameplay = True
 
-while not Gameplay: #Realized using this was easier than using "== True"
-    beginGame()
+card = (Color_list, Card_list, "of", Suits_list)
 
 def shuffleDeck():
     deck = []
@@ -67,30 +83,6 @@ def ValueofCard(card):
 
 def drawCard(deck):
     return deck.pop()
-
-def betweenRounds(currentBet): #created this to give the player a chance to relearn rules or cashout.
-    
-    while True: 
-    
-        nextSteps = input("\nAlrighty, you're between rounds. Need help, want to cashout, or ready to continue? (Remember, no capitals) \n ")
-        if nextSteps == "help":
-            print(rules)
-            betweenRounds = True
-
-        elif nextSteps == "cashout": 
-            nextSteps = False
-            print("\nLooks like you're cashing out at ", chips)
-            print("Thank's for playing, ", player, " it was fun! hope to see you again soon.")
-            exit(0)
-
-        elif nextSteps == "continue":
-            nextSteps = False
-            continue
-
-        else:
-            print("\nThat's not a correct input, give it another shot. \n")
-            nextSteps = True
-
 
 
 def firstRound(deck, bet): #Code for first round. 
