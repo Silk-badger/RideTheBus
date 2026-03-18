@@ -10,7 +10,7 @@ rules = "\nYou will play 1-4 rounds, depending on which round you decide to cash
 "\n \t \t \t 4th play (final round) - Guess the suit of the final card drawn for a *10 jackpot. \n \n" \
 "\n NOTE: There is no pause between rounds, so type cash to cashout on the round you're on or keep playing.\n" \
 "NOTE: there is no point where captials are needed, so please continually use lowercase.\n" \
-"\nOnce you've finished reading, please type ready to start."
+"\n\n\n\n\n"
 
 chips = 500
 
