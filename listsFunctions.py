@@ -37,7 +37,7 @@ def player():
     playerName = input("What's your name, friend? ")
     if playerName == "Card Master":
         print("Wrong, that's my name. We're calling you Billy.")
-        playerName == "Billy"
+        playerName = "Billy"
         print("Anyways Billy, welcome to...\n \nRIDE! \nTHE! \nBUS!\n")
         Gameplay = False
     
@@ -56,6 +56,10 @@ def beginGame():
         print(rules)
         beginGame()
 
+    elif Starting == "cancel":
+        print("\nAh, quitting early? fair enough. See ya!\n")
+        exit()
+
     elif Starting == "ready":
         Gameplay = True
         print("\nGreat, let's get into it!\n")
@@ -69,7 +73,6 @@ def beginGame():
             bet = int(input(f"\nPlease place your bet, {playerName}. (numbers only!)\n"))
             if bet < 10 or bet > 100:
                 print("Sorry pal, you can't bet under 10 or over 100, please try again.")
-                bet = int(input(f"\nPlease place your bet, {playerName}.\n"))
             elif bet >= 10 and bet <= 100: 
                 chips -= bet #-= subtracts an operator
                 validBet = True
