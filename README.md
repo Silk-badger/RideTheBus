@@ -16,4 +16,9 @@ and on the final round, you guess the suit of the last card for a *10 mega jackp
 NOTE: This game is time based in real life, but wont be for this project.
 (Inspiration comes from the in game version found in Schedule 1 (in the optional casino spot.))
 
-After days of work, I believe I've finished all code. It took blood sweat and tears to do my research on W3 school and to bug fix, but as of 3/18/2025 at ~3:50 PM, I've finally finished the code for Ride The Bus. (with minimal bugs.)
+After days of work, I believe I've finished all code. It took blood sweat and tears to do my research on W3 school and to bug fix, but as of 3/18/2025 at ~4:35 PM, I've finally finished the code for Ride The Bus. (with minimal bugs.)
+
+works cited:
+https://www.w3schools.com/python/ref_keyword_global.asp#gsc.tab=0
+https://www.w3schools.com/python/ref_list_pop.asp#gsc.tab=0&gsc.q=.lower
+www.w3schools.com/python/ref_random_shuffle.asp
