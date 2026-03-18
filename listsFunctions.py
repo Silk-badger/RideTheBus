@@ -27,7 +27,7 @@ playerName = "" #setting the name blank will make it adjustable.
 Gameplay = True
 global player
 
-if chips <= 0:
+if chips == 0:
     print(f"\nlooks like you're done for, {playerName}. Better luck next time!")
     exit()
 
@@ -73,6 +73,8 @@ def beginGame():
             bet = int(input(f"\nPlease place your bet, {playerName}. (numbers only!)\n"))
             if bet < 10 or bet > 100:
                 print("Sorry pal, you can't bet under 10 or over 100, please try again.")
+            elif bet > chips:
+                print(f"\nYou don't have that much to spare, {playerName}.\n")
             elif bet >= 10 and bet <= 100: 
                 chips -= bet #-= subtracts an operator
                 validBet = True
