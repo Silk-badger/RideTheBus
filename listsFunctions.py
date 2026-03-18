@@ -200,8 +200,8 @@ def thirdRound(deck, bet, card1, card2):
         chips += bet
         midRound()
         return False, bet, None  
-    elif (guess == "Inside" and low < current < high) or \
-       (guess == "Outside" and (current < low or current > high)):
+    elif (guess == "inside" and low < current < high) or \
+       (guess == "outside" and (current < low or current > high)):
         print(f"\nGreat luck {playerName}... are you cheating?\n")
         return True, bet * 4, (value, suit)
     else:
