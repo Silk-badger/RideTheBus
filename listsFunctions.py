@@ -63,15 +63,18 @@ def beginGame():
 
         deck = shuffleDeck()
 
-        bet = int(input(f"\nPlease place your bet, {playerName}.\n"))
-        if bet < 10 or bet > 100:
-            print("Sorry pal, you can't bet under 10 or over 100, please try again.")
-            bet = int(input(f"\nPlease place your bet, {playerName}.\n"))
-        elif bet >= 10 and bet <= 100: 
-            chips -= bet #-= subtracts an operator
-        else:
-            print("\nPlease follow the rules and start the program again. It's a number only input.\n")
-        
+        validBet = False
+
+        while not validBet: #Created and refurbished to make sure the number selected is applicable.
+            bet = int(input(f"\nPlease place your bet, {playerName}. (numbers only!)\n"))
+            if bet < 10 or bet > 100:
+                print("Sorry pal, you can't bet under 10 or over 100, please try again.")
+                bet = int(input(f"\nPlease place your bet, {playerName}.\n"))
+            elif bet >= 10 and bet <= 100: 
+                chips -= bet #-= subtracts an operator
+                validBet = True
+
+            
         result, bet, first_card = firstRound(deck, bet)
         
         if result: #Code for each round's result.
