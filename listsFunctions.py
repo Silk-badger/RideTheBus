@@ -14,7 +14,7 @@ rules = "\nYou will play 1-4 rounds, depending on which round you decide to cash
 
 chips = 500
 
-Suits_list = ["Clubs", "Hearts", "Diamonds", "Spades"]
+Suits_list = ["clubs", "hearts", "diamonds", "spades"]
 
 Color_list = ["Red", "Black"]
 
@@ -84,16 +84,18 @@ def beginGame():
         
         if result: #Code for each round's result.
             #Everything below here is relatively simple, each line is for whether you win or loose a round. 
-            print(f"\nCurrently, you have {bet} winnings, {playerName}")
+            print(f"\nCurrently, you have {bet} chips, {playerName}")
             result, bet, secondCard = secondRound(deck, bet, first_card)
             if result: 
-                print(f"\nAlrighty {playerName}, looks like you've got {bet} winnings.")
+                print(f"\nAlrighty {playerName}, looks like you've got {bet} chips.")
                 result, bet, thirdCard = thirdRound(deck, bet, first_card, secondCard)
                 if result:
                     print(f"\nfinal round, {playerName}. Time to gamble with {bet} chips.")
-                    result, bet, fourthCard = finalRound(deck,bet)
+                    result, bet, fourthCard = finalRound(deck, bet, thirdCard)
                     if result:
-                        print(f"So {playerName}... you get to walk away with walk away with {chips}.")
+                        winnings = bet + chips
+                        print(f"So {playerName}... you get to walk away with walk away with {winnings} Jackpot.")
+                        playAgain()
                     else:
                         print(f"\nYikes! You've lost... looks like you're at {chips} chips now.")
                         playAgain()
@@ -151,7 +153,7 @@ def firstRound(deck, bet): #beginning/actual first round code.
         print("Incorrect, try again ")
         return firstRound(deck, bet)
 
-    if suit in ["Hearts", "Diamonds"]:
+    if suit in ["hearts", "diamonds"]:
         Color = "Red" #Only red cards can be Hearts or Diamonds
     else: Color = "Black" #The same goes for black cards being Spades or Clubs.
 
@@ -216,7 +218,8 @@ def thirdRound(deck, bet, card1, card2):
         print("\nThere's that lady luck, kicking you down!\n")
         return False, 0, (value, suit)
     
-def finalRound(deck, bet, previousCard):
+def finalRound(deck, bet, thirdCard):
+    print("\n(Friendly reminder because I'm kind, the suits are 'hearts', 'clubs', 'spades', and 'diamonds')\n")
     guess = input(f"\nHere it is {playerName}, the big finale... All the big bucks... What Suit will the next card be?\n")
     card = drawCard(deck)
     value, suit = card
